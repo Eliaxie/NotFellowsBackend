@@ -11,6 +11,19 @@ mailchimp.setConfig({
   server: process.env.SERVER
 })
 
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'https://notfellows.github.io/');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+  res.header('Access-Control-Expose-Headers', 'Content-Length');
+  res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  } else {
+    return next();
+  }
+});
+
 const listId = process.env.LISTID
 
 var jsonParser = bodyParser.json()
