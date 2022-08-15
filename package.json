@@ -4,7 +4,9 @@
   "description": "Newsletter",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "node build/index.js",
+    "build": "tsc",
+    "postinstall": "npm run build",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
