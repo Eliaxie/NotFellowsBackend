@@ -8,10 +8,10 @@ const port = process.env.PORT || 3000;
 
 mailchimp.setConfig({
   apiKey: process.env.SECRET_KEY,
-  server: "us12"
+  server: process.env.SERVER
 })
 
-const listId = "9b3659625c"
+const listId = process.env.LISTID
 
 var jsonParser = bodyParser.json()
 
